@@ -78,6 +78,12 @@ Clicking the close button within the search field should clear out the field and
 
 When clicking on one of the `Hotels`, `Cities` or `Countries` links, the application should redirect to the relevant page and render the selected `Hotel`, `City` or `Country` as a heading.
 
+### Limitations
+
+Given the time constraints, we do not expect a fully production-ready solution. We're primarily interested in the approach and the overall quality of the solution. 
+Feel free to modify the current codebase as needed, including adding or removing dependencies. 
+For larger or more time-intensive changes, you're welcome to outline your ideas in the write-up section below and discuss them further during the call.
+
 <img src="./assets/search-example.png" width="400px" />
 
 ### Write-up
