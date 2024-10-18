@@ -80,8 +80,8 @@ When clicking on one of the `Hotels`, `Cities` or `Countries` links, the applica
 
 ### Limitations
 
-Given the time constraints, we do not expect a fully production-ready solution. We're primarily interested in the approach and the overall quality of the solution. 
-Feel free to modify the current codebase as needed, including adding or removing dependencies. 
+Given the time constraints, we do not expect a fully production-ready solution. We're primarily interested in the approach and the overall quality of the solution.
+Feel free to modify the current codebase as needed, including adding or removing dependencies.
 For larger or more time-intensive changes, you're welcome to outline your ideas in the write-up section below and discuss them further during the call.
 
 <img src="./assets/search-example.png" width="400px" />
@@ -98,21 +98,21 @@ _When all the behaviour is implemented, feel free to add some observations or co
 
 ```json
 [
-  {
-    "chain_name": "Samed Resorts Group",
-    "hotel_name": "Sai Kaew Beach Resort",
-    "addressline1": "8/1 Moo 4 Tumbon Phe Muang",
-    "addressline2": "",
-    "zipcode": "21160",
-    "city": "Koh Samet",
-    "state": "Rayong",
-    "country": "Thailand",
-    "countryisocode": "TH",
-    "star_rating": 4
-  },
-  {
-    /* ... */
-  }
+	{
+		"chain_name": "Samed Resorts Group",
+		"hotel_name": "Sai Kaew Beach Resort",
+		"addressline1": "8/1 Moo 4 Tumbon Phe Muang",
+		"addressline2": "",
+		"zipcode": "21160",
+		"city": "Koh Samet",
+		"state": "Rayong",
+		"country": "Thailand",
+		"countryisocode": "TH",
+		"star_rating": 4
+	},
+	{
+		/* ... */
+	}
 ]
 ```
 
@@ -120,10 +120,10 @@ _When all the behaviour is implemented, feel free to add some observations or co
 
 ```json
 [
-  { "name": "Auckland" },
-  {
-    /* ... */
-  }
+	{ "name": "Auckland" },
+	{
+		/* ... */
+	}
 ]
 ```
 
@@ -131,12 +131,38 @@ _When all the behaviour is implemented, feel free to add some observations or co
 
 ```json
 [
-  {
-    "country": "Belgium",
-    "countryisocode": "BE"
-  },
-  {
-    /* ... */
-  }
+	{
+		"country": "Belgium",
+		"countryisocode": "BE"
+	},
+	{
+		/* ... */
+	}
 ]
 ```
+
+### Changes Made
+
+I have implemented a search functionality that allows users to efficiently and performantly search for **Hotels**, **Cities**, and **Countries**. The following changes have been made to achieve this:
+
+- **API Search Endpoint**: Added a new `/search` endpoint in the API that accepts a query parameter `q`. This endpoint performs a case-insensitive partial search across the `hotels`, `cities`, and `countries` collections using regular expressions to find matches in relevant fields. Additionally, optimized the queries by using `Promise.all` to execute the searches in parallel, enhancing performance.
+
+- **Detailed Endpoints for Hotels, Cities, and Countries**: Introduced new API endpoints to retrieve specific details:
+
+  - `/hotels/:id` for fetching details of a specific hotel.
+  - `/cities/:name` for fetching details of a specific city.
+  - `/countries/:name` for fetching details of a specific country.
+
+  These endpoints enable the application to display detailed information when a user clicks on a search result.
+
+- **Frontend Updates**: Modified the frontend application to utilize the new `/search` endpoint. Implemented a user interface that displays search results categorized into **Hotels**, **Cities**, and **Countries**. As users type into the search bar, relevant results are dynamically displayed. Additionally, added functionality to clear the search results by clicking the close button.
+
+- **Navigation and Routing**: Integrated React Router into the frontend application and added routes to handle navigation to the detailed pages of selected Hotels, Cities, and Countries. Created additional components (`HotelDetail`, `CityDetail`, `CountryDetail`) to display specific information for each entity.
+
+- **Code Structure and Styling Improvements**: Made minor adjustments to code style and formatting for consistency, such as using single quotes and adjusting indentation. Enhanced the overall structure for better readability and maintainability.
+
+### Running Tests
+
+To execute the tests, use the following command:
+
+bun test
